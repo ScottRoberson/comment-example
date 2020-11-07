@@ -7,7 +7,7 @@ const Post = ({ posts, addComment, comments }) => {
       <div key={post.id}>
         <p>{post.text}</p>
         <CommentInput addComment={addComment} id={post.id} />
-        <PostComments comments={comments} />
+        <PostComments posts={posts} />
       </div>
     );
   });

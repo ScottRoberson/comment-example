@@ -5,28 +5,24 @@ import Form from './Form';
 import Post from './Post';
 
 function App() {
-  const [posts, setPosts] = useState([
-    {
-      id: uuidv4(),
-      text: 'This is a One',
-    },
-    {
-      id: uuidv4(),
-      text: 'This is Two',
-    },
-  ]);
+  const [posts, setPosts] = useState([]);
   const [comments, setComments] = useState([]);
 
   const addPost = (text) => {
-    setPosts([...posts, { id: uuidv4(), text: text }]);
+    setPosts([...posts, { id: uuidv4(), text }, { comments: [] }]);
   };
 
-  const addComment = (text, id) => {
-    if (id === id) {
-      setComments([...comments, { id: uuidv4(), text: text }]);
-    }
+  const addComment = (text, postId) => {
+    setPosts(
+      posts.map((post) => {
+        if (post.id === postId) {
+          return [...comments, { comments: { id: uuidv4(), text } }];
+        }
+        return post;
+      })
+    );
   };
-
+  console.log(posts);
   return (
     <div className='App'>
       <h1>List</h1>
