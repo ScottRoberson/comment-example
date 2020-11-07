@@ -6,17 +6,19 @@ import Post from './Post';
 
 function App() {
   const [posts, setPosts] = useState([]);
-  const [comments, setComments] = useState([]);
 
   const addPost = (text) => {
-    setPosts([...posts, { id: uuidv4(), text }, { comments: [] }]);
+    setPosts([...posts, { id: uuidv4(), text, comments: [] }]);
   };
 
   const addComment = (text, postId) => {
     setPosts(
       posts.map((post) => {
         if (post.id === postId) {
-          return [...comments, { comments: { id: uuidv4(), text } }];
+          return {
+            ...post,
+            comments: [...post.comments, { id: uuidv4(), text }]
+          }
         }
         return post;
       })
@@ -27,7 +29,7 @@ function App() {
     <div className='App'>
       <h1>List</h1>
       <Form addPost={addPost} />
-      <Post posts={posts} addComment={addComment} comments={comments} />
+      <Post posts={posts} addComment={addComment} />
     </div>
   );
 }

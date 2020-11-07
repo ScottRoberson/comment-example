@@ -1,12 +1,12 @@
 import React from 'react';
 
-const PostComments = ({ posts }) => {
+const PostComments = ({ comments }) => {
   return (
     <div>
-      {posts.map((post) => {
+      {comments.map((comment) => {
         return (
-          <div key={post.id}>
-            <p>{post.text}</p>
+          <div key={comment.id}>
+            <p>{comment.text}</p>
           </div>
         );
       })}
