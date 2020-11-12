@@ -17,8 +17,8 @@ function App() {
         if (post.id === postId) {
           return {
             ...post,
-            comments: [...post.comments, { id: uuidv4(), text }]
-          }
+            comments: [...post.comments, { id: uuidv4(), text }],
+          };
         }
         return post;
       })
@@ -27,7 +27,7 @@ function App() {
   console.log(posts);
   return (
     <div className='App'>
-      <h1>List</h1>
+      <h1>List!!</h1>
       <Form addPost={addPost} />
       <Post posts={posts} addComment={addComment} />
     </div>
